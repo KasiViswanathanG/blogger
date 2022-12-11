@@ -13,7 +13,7 @@ root.render(
     <Auth0Provider
       domain="dev-0jq6glalqnlqqw3t.us.auth0.com"
       clientId="Kz5OLq4CK5TVEyihm3RWRPMcsB9WeCyH"
-      redirectUri={window.location.origin}
+      redirectUri="https://bloggers.up.railway.app/"
     >
       <Provider store={store}>
         <App />
