@@ -5,6 +5,7 @@ import BlogCard from "../BlogCard";
 import science from "../../static/images/science.jpg";
 import Basic from "../template/Basic";
 import { useNavigate } from "react-router-dom";
+const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
 
 function SciencePage() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function SciencePage() {
   const getArticles = async () => {
     await axios
       .get(
-        "https://newsapi.org/v2/everything?q=science&from=2022-11-16&sortBy=publishedAt&apiKey=300be0372ce64ead840346911752051c"
+        `https://newsapi.org/v2/everything?q=science&from=2022-11-16&sortBy=publishedAt&apiKey=${newsApiKey}`
       )
       .then((response) => {
         setArticles(response.data.articles);

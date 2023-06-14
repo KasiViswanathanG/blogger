@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Basic from "../template/Basic";
 import { useParams } from "react-router-dom";
+const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
 
 function CultureDetailsPage() {
   const { id } = useParams();
@@ -25,7 +26,7 @@ function CultureDetailsPage() {
   const getArticle = async () => {
     await axios
       .get(
-        "https://newsapi.org/v2/everything?q=culture&from=2022-11-16&sortBy=publishedAt&apiKey=300be0372ce64ead840346911752051c"
+        `https://newsapi.org/v2/everything?q=culture&from=2022-11-16&sortBy=publishedAt&apiKey=${newsApiKey}`
       )
       .then((response) => {
         setArticle(response.data.articles[id]);

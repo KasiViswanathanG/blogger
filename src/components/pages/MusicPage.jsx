@@ -5,6 +5,7 @@ import BlogCard from "../BlogCard";
 import music from "../../static/images/music.jpg";
 import Basic from "../template/Basic";
 import { useNavigate } from "react-router-dom";
+const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
 
 function MusicPage() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function MusicPage() {
   const getArticles = async () => {
     await axios
       .get(
-        "https://newsapi.org/v2/everything?q=music&from=2022-11-16&sortBy=publishedAt&apiKey=300be0372ce64ead840346911752051c"
+        `https://newsapi.org/v2/everything?q=music&from=2022-11-16&sortBy=publishedAt&apiKey=${newsApiKey}`
       )
       .then((response) => {
         setArticles(response.data.articles);

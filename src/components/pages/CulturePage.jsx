@@ -5,6 +5,7 @@ import BlogCard from "../BlogCard";
 import culture from "../../static/images/culture.jpg";
 import Basic from "../template/Basic";
 import { useNavigate } from "react-router-dom";
+const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
 
 function CulturePage() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function CulturePage() {
   const getArticles = async () => {
     await axios
       .get(
-        "https://newsapi.org/v2/everything?q=culture&from=2022-11-16&sortBy=publishedAt&apiKey=300be0372ce64ead840346911752051c"
+        `https://newsapi.org/v2/everything?q=culture&from=2022-11-16&sortBy=publishedAt&apiKey=${newsApiKey}`
       )
       .then((response) => {
         setArticles(response.data.articles);
